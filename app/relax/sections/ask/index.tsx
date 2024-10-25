@@ -6,7 +6,7 @@ import { CgWorkAlt } from "react-icons/cg";
 import { IoMdHappy } from "react-icons/io";
 import { useEffect, useState } from "react";
 
-export const Form: React.FC = () => {
+export const Ask: React.FC = () => {
     const [volume, setVolume] = useState<number | null>(null);
     const [focus, setFocus] = useState<number | null>(null);
   const handleVolumeChange = (value: number) => {
@@ -14,9 +14,9 @@ export const Form: React.FC = () => {
     console.log('Selected volume:', value); // For debugging
   };
 
-  const handleFocusChange = (value2: number) => {
-    setFocus(value2);
-    console.log("Selected focus level:", value2);
+  const handleFocusChange = (value: number) => {
+    setFocus(value);
+    console.log("Selected focus level:", value);
   };
 
 
@@ -127,15 +127,15 @@ export const Form: React.FC = () => {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
     >
-        {Array.from({ length: 5 }, (_, i) => i + 1).map((value2) => (
+        {Array.from({ length: 5 }, (_, i) => i + 1).map((value) => (
         <button
-            key={value2}
-            onClick={() => handleFocusChange(value2)}
+            key={value}
+            onClick={() => handleFocusChange(value)}
             className={`py-4 px-6 text-white rounded-full font-semibold 
-            ${volume === value2 ? 'bg-blue-500' : 'bg-gray-300'} 
-            ${volume === value2 ? 'ring-4 ring-blue-300' : ''}`}
+            ${volume === value ? 'bg-blue-500' : 'bg-gray-300'} 
+            ${volume === value ? 'ring-4 ring-blue-300' : ''}`}
         >
-            {value2}
+            {value}
         </button>
         ))}
 
@@ -147,11 +147,9 @@ export const Form: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
               >
-                <Link href={'/focus/result'}>
-                <button className="mt-10 bg-green-500 text-white py-3 px-6 rounded-full font-bold shadow-lg pt-4 hover:bg-green-700">
+                <button className="mt-10 bg-green-500 text-white py-3 px-6 rounded-full font-bold shadow-lg hover:bg-green-700">
                   Submit
                 </button>
-                </Link>
             </motion.div>
         )}
 

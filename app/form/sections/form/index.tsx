@@ -80,14 +80,14 @@ export const Form: React.FC = () => {
                   // value={localFormData.name}
                   // onChange={handleChange}
                   className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Enter your name"
+                  placeholder="กรอกชื่อของคุณ"
                 />
               </div>
  
               {/* Age Input */}
               <div className="mb-6">
                 <label htmlFor="age" className="block text-left text-gray-700 font-semibold mb-2">
-                  Age:
+                  อายุ :
                 </label>
                 <input
                   type="number"
@@ -95,14 +95,14 @@ export const Form: React.FC = () => {
                   // value={localFormData.age}
                   // onChange={handleChange}
                   className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Enter your age"
+                  placeholder="กรอกอายุของคุณ"
                 />
               </div>
 
               {/* Job Input */}
               <div className="mb-6">
                 <label htmlFor="job" className="block text-left text-gray-700 font-semibold mb-2">
-                  Job:
+                  อาชีพ :
                 </label>
                 <input
                   type="text"
@@ -110,7 +110,7 @@ export const Form: React.FC = () => {
                   // value={localFormData.job}
                   // onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Enter your job"
+                  placeholder="กรอกอาชีพของคุณ"
                 />
               </div>
 
@@ -121,12 +121,14 @@ export const Form: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1, ease: easeOut }}
           >
+            <Link href={'#mood'}>
                 <button
-                  type="submit"
+                  // type="submit"
                   className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full  hover:bg-sky-600 transition-all duration-300 ease-out"
                 >
                   Submit
                 </button>
+              </Link>
             </motion.div>
             </form>
           </motion.div>
