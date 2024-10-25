@@ -1,7 +1,7 @@
 // import { Welcome } from "./sections/welcome";
-import { Form } from "@/app/form/sections/form";
+import { Form } from "@/app/focus/sections/welcome";
 import Navbar from "../components/Navbar";
-const Home: React.FC = () => {
+const Focus: React.FC = () => {
 
     return (
         <>
@@ -26,4 +26,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Focus;
