@@ -1,6 +1,6 @@
-import { Welcome } from "./sections/welcome";
-// import { Hello} from "@/app/home/sections/hello";
-// import Navbar from "../components/Navbar";
+// import { Welcome } from "./sections/welcome";
+import { Form } from "@/app/form/sections/form";
+
 const Home: React.FC = () => {
 
     return (
@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 
         /> */}
         <main>
-            <Welcome />
+            <Form />
             {/* <Hello /> */}
         </main>
         </>
