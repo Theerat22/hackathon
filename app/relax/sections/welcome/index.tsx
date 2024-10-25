@@ -1,12 +1,10 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-// import Link from "next/link";
-// import { CgWorkAlt } from "react-icons/cg";
-// import { IoMdHappy } from "react-icons/io";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const Ask: React.FC = () => {
+export const Form: React.FC = () => {
     const [volume, setVolume] = useState<number | null>(null);
     const [focus, setFocus] = useState<number | null>(null);
   const handleVolumeChange = (value: number) => {
@@ -14,9 +12,9 @@ export const Ask: React.FC = () => {
     console.log('Selected volume:', value); // For debugging
   };
 
-  const handleFocusChange = (value: number) => {
-    setFocus(value);
-    console.log("Selected focus level:", value);
+  const handleFocusChange = (value2: number) => {
+    setFocus(value2);
+    console.log("Selected focus level:", value2);
   };
 
 
@@ -127,15 +125,15 @@ export const Ask: React.FC = () => {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
     >
-        {Array.from({ length: 5 }, (_, i) => i + 1).map((value) => (
+        {Array.from({ length: 5 }, (_, i) => i + 1).map((value2) => (
         <button
-            key={value}
-            onClick={() => handleFocusChange(value)}
+            key={value2}
+            onClick={() => handleFocusChange(value2)}
             className={`py-4 px-6 text-white rounded-full font-semibold 
-            ${volume === value ? 'bg-blue-500' : 'bg-gray-300'} 
-            ${volume === value ? 'ring-4 ring-blue-300' : ''}`}
+            ${volume === value2 ? 'bg-blue-500' : 'bg-gray-300'} 
+            ${volume === value2 ? 'ring-4 ring-blue-300' : ''}`}
         >
-            {value}
+            {value2}
         </button>
         ))}
 
@@ -147,9 +145,11 @@ export const Ask: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
               >
-                <button className="mt-10 bg-green-500 text-white py-3 px-6 rounded-full font-bold shadow-lg hover:bg-green-700">
+                <Link href={'/focus/result'}>
+                <button className="mt-10 bg-green-500 text-white py-3 px-6 rounded-full font-bold shadow-lg pt-4 hover:bg-green-700">
                   Submit
                 </button>
+                </Link>
             </motion.div>
         )}
 
