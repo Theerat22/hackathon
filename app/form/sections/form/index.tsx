@@ -1,11 +1,11 @@
 "use client";
 // import Image from "next/image";
 import { easeOut, motion } from "framer-motion";
-
+import Link from "next/link";
 export const Form = () => {
   return (
     <>
-      <section id="welcome" className="relative min-h-screen pt-32 bg-amber-100 py-12 overflow-hidden">
+      <section id="form" className="relative min-h-screen pt-32 bg-amber-100 py-12 overflow-hidden">
         {/* Circle Backgrounds */}
         <div className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-[#4B6A81] opacity-80 rounded-full shadow-2xl z-0"></div>
         <div className="absolute top-[-50px] right-[-150px] w-[250px] h-[250px] md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] bg-[#B2CF86] opacity-90 rounded-full shadow-xl z-0"></div>
@@ -85,13 +85,29 @@ export const Form = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1, ease: easeOut }}
           >
+            <Link href={'#mood'}>
                 <button
                   type="submit"
                   className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full  hover:bg-sky-600 transition-all duration-300 ease-out"
                 >
                   Submit
                 </button>
+            </Link>
             </motion.div>
+
+            {/* <motion.div 
+          className="text-center mt-10"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1, ease: easeOut }}
+          >
+                <button
+                  type="submit"
+                  className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full  hover:bg-sky-600 transition-all duration-300 ease-out"
+                >
+                  Submit
+                </button>
+            </motion.div> */}
 
         </div>
       </section>
