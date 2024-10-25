@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.20",
     "framer-motion": "^11.11.10",
     "install": "^0.13.0",
+    "lucide-react": "^0.453.0",
     "next": "^15.0.1",
     "npm": "^10.9.0",
     "postcss": "^8.4.47",

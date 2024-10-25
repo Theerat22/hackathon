@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CgWorkAlt } from "react-icons/cg";
 import { IoMdHappy } from "react-icons/io";
 import { useState } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { useGlobalContext } from "@/app/context/GlobalContext";
 
 export const Form: React.FC = () => {

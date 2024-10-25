@@ -1,16 +1,12 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation"; // Import useRouter
 import { useCallback, useEffect, useState } from "react";
 import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
+  Menu
 } from "@headlessui/react";
-import { AlignJustify, XIcon, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 type NavigationType = "single" | "multi";
 

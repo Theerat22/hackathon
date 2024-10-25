@@ -1,9 +1,9 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-import Link from "next/link";
-import { CgWorkAlt } from "react-icons/cg";
-import { IoMdHappy } from "react-icons/io";
+// import Link from "next/link";
+// import { CgWorkAlt } from "react-icons/cg";
+// import { IoMdHappy } from "react-icons/io";
 import { useEffect, useState } from "react";
 
 export const Ask: React.FC = () => {

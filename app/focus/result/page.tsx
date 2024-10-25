@@ -1,7 +1,7 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-import Link from "next/link";
+// import Link from "next/link";
 import { TbAirConditioning } from "react-icons/tb";
 import Navbar from "@/app/components/Navbar";
 const Focus: React.FC = () => {
@@ -48,7 +48,7 @@ const Focus: React.FC = () => {
             transition={{ duration: 1, delay: 0.5, ease: easeOut }}
           >
             <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">
-                <h1 className="text-2xl font-bold text-customGreen mb-4 pt-20 lg:text-2xl">
+                <h1 className="text-2xl font-bold text-customGreen mb-2 lg:text-2xl">
                 คุณเหมาะกับ
                 </h1>
                     <TbAirConditioning size={100} className="text-customGreen mb-2" /> {/* Adjusted margin-bottom */}
