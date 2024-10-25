@@ -5,18 +5,19 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export const Form: React.FC = () => {
-    const [volume, setVolume] = useState<number | null>(null);
-    const [focus, setFocus] = useState<number | null>(null);
-  const handleVolumeChange = (value: number) => {
-    setVolume(value);
-    console.log('Selected volume:', value); // For debugging
-  };
+  const [selectedValue, setSelectedValue] = useState<number | null>(null);
 
-  const handleFocusChange = (value2: number) => {
-    setFocus(value2);
-    console.log("Selected focus level:", value2);
-  };
+  const options = [
+    { label: 'จริงมาก', value: 1 },    // Very true
+    { label: 'ค่อนข้างจริง', value: 2 },  // Somewhat true
+    { label: 'น้อยครั้ง', value: 3 },   // Rarely true
+    { label: 'ไม่เคย', value: 4 },     // Never true
+  ];
 
+  const handleSelect = (value: number) => {
+    setSelectedValue(value);
+    console.log('Selected value:', value); // For debugging or further use
+  };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -54,7 +55,7 @@ export const Form: React.FC = () => {
         transition={{ duration: 1, delay: 0, ease: easeOut }}
         >
             <div className="bg-white text-customGreen font-bold text-3xl py-4 px-4 w-64 mx-auto rounded-xl shadow-lg z-10 mb-8">
-                โฟกัสการเรียน / ทำงาน
+                ผ่อนคลายจากการทำงาน
             </div>
         </motion.div>
 
@@ -81,80 +82,49 @@ export const Form: React.FC = () => {
         <div className="container mx-auto px-4 text-center flex flex-col justify-center items-center z-20 relative pt-20">
 
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0, ease: easeOut }}
         >
             <div className="bg-white text-customGreen font-bold text-4xl py-6 px-6 max-w-3xl mx-auto rounded-xl shadow-lg z-10 mb-8">
-            สภาพแวดล้อมของคุณ มีเสียงรบกวนระดับไหน
+            เธอเคยนอนไม่หลับเพราะคิดมากหรือกังวลใจ
             </div>
         </motion.div>
-
-        <motion.div 
-        className="flex space-x-4 justify-center pt-5"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+        <div className="flex flex-col space-y-4 p-4">
+      {options.map((option, index) => (
+        <motion.button
+          key={option.value}
+          onClick={() => handleSelect(option.value)}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.75 + index * 0.2, ease: "easeOut" }}
+          className={`py-8 px-20 text-white rounded-lg font-semibold 
+          ${selectedValue === option.value ? 'ring-4 ring-blue-400' : ''} 
+          ${option.value === 1 ? 'bg-[#C97E7E]' : ''} 
+          ${option.value === 2 ? 'bg-[#D6AA8B]' : ''} 
+          ${option.value === 3 ? 'bg-[#D6BE8B]' : ''} 
+          ${option.value === 4 ? 'bg-[#AED68B]' : ''}`}
         >
-            {Array.from({ length: 5 }, (_, i) => i + 1).map((value) => (
-            <button
-                key={value}
-                onClick={() => handleVolumeChange(value)}
-                className={`py-4 px-6 text-white rounded-full font-semibold 
-                ${volume === value ? 'bg-blue-500' : 'bg-gray-300'} 
-                ${volume === value ? 'ring-4 ring-blue-300' : ''}`}
-            >
-                {value}
-            </button>
-            ))}
-        </motion.div>
-
-            <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0, ease: "easeOut" }}
-    >
-        <div className="bg-white text-customGreen font-bold text-4xl py-6 px-6 max-w-3xl mt-24 mx-auto rounded-xl shadow-lg z-10 mb-8">
-        ระดับความโฟกัสที่ต้องการ
-        </div>
-    </motion.div>
-
-    <motion.div 
-    className="flex space-x-4 justify-center pt-5"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-    >
-        {Array.from({ length: 5 }, (_, i) => i + 1).map((value2) => (
-        <button
-            key={value2}
-            onClick={() => handleFocusChange(value2)}
-            className={`py-4 px-6 text-white rounded-full font-semibold 
-            ${volume === value2 ? 'bg-blue-500' : 'bg-gray-300'} 
-            ${volume === value2 ? 'ring-4 ring-blue-300' : ''}`}
-        >
-            {value2}
-        </button>
-        ))}
-
-    </motion.div>
-
-        {volume !== null && focus !== null && (
-            <motion.div
+          {option.label}
+        </motion.button>
+      ))}
+      {selectedValue !== null && (
+        
+              <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
+                transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                className="pt-8"
               >
-                <Link href={'/focus/result'}>
-                <button className="mt-10 bg-green-500 text-white py-3 px-6 rounded-full font-bold shadow-lg pt-4 hover:bg-green-700">
+                <Link href={'/relax/result'}>
+                <button className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full  hover:bg-sky-600 transition-all duration-300 ease-out">
                   Submit
                 </button>
                 </Link>
-            </motion.div>
-        )}
-
-
-</div>
+              </motion.div>
+            )}
+    </div>
+        </div>
 
       </section>
 

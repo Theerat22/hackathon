@@ -2,7 +2,7 @@
 
 import { easeOut, motion } from "framer-motion";
 // import Link from "next/link";
-import { TbAirConditioning } from "react-icons/tb";
+import { IoMdHappy } from "react-icons/io";
 import Navbar from "@/app/components/Navbar";
 const Focus: React.FC = () => {
 
@@ -49,15 +49,17 @@ const Focus: React.FC = () => {
           >
             <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">
                 <h1 className="text-2xl font-bold text-customGreen mb-2 lg:text-2xl">
-                คุณเหมาะกับ
+                คำแนะนำ
                 </h1>
-                    <TbAirConditioning size={100} className="text-customGreen mb-2" /> {/* Adjusted margin-bottom */}
-                    <h1 className="text-center text-customGreen font-semibold text-lg">เสียงแอร์</h1>
+                <IoMdHappy size={100} className="text-customGreen mb-2" /> 
+                    <p className="text-center pt-4 text-black" >1.สร้างกิจวัตรการนอน</p>
+                    <p className="text-center pt-4 text-black" >2.หลีกเลี่ยงการใช้หน้าจอ</p>
+                    <p className="text-center pt-4 text-black" >3.สร้างบรรยากาศที่เหมาะสม</p>
+                    <p className="text-center pt-4 text-black" >4.หลีกเลี่ยงคาเฟอีนและแอลกอฮอล์</p>
+                    <p className="text-center pt-4 text-black" >5.ผ่อนคลายก่อนนอน</p>
 
-                    <p className="text-center pt-4 text-black" >เสียงแอร์เป็นเสียงรอบข้างที่มีลักษณะเป็นเสียง White Noise ซึ่งมีคุณสมบัติที่ช่วยให้เกิดสมาธิและช่วยให้จดจ่อกับงานหรือการเรียนได้ดีขึ้น</p>
             </div>
           </motion.div>
-
         </div>
       </section>
         </main>

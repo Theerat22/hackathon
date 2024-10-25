@@ -169,7 +169,7 @@ export const Form: React.FC = () => {
                 </div>
             </Link>
             <Link 
-                href={'/home'}
+                href={'/relax'}
                 className="flex flex-col items-center mt-7 transform hover:scale-110 transition duration-300 lg:mt-20"
                 >
                 <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">

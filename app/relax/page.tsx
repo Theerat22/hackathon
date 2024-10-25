@@ -1,5 +1,5 @@
 // import { Welcome } from "./sections/welcome";
-import { Form } from "@/app/focus/sections/welcome";
+import { Form } from "@/app/relax/sections/welcome";
 import Navbar from "../components/Navbar";
 const Relax: React.FC = () => {
 
