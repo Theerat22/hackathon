@@ -1,7 +1,6 @@
 "use client";
-// import Image from "next/image";
+
 import { easeOut, motion } from "framer-motion";
-// import { TbClick } from "react-icons/tb";
 import Link from "next/link";
 
 export const Welcome = () => {

@@ -1,8 +1,8 @@
 {
-  "name": "hackathon",
+  "name": "MoodFlow",
   "version": "1.0.0",
-  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
-  "main": "index.js",
+  "description": "MoodFlow เป็นเว็ปแอปพลิเคชั่นช่วยให้ผุ้ใช้งานผ่อนคลายได้ จากการเรียนหนังสือ และให้คำปรึกษาเกี่ยวกับการเรียน",
+  "main": "/home/page.tsx",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
