@@ -1,31 +1,46 @@
+// FormContext.tsx
 "use client";
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// กำหนด type สำหรับข้อมูล global
-interface GlobalContextType {
-  formData: { name: string; age: number; job: string };
-  setFormData: React.Dispatch<React.SetStateAction<{ name: string; age: number; job: string }>>;
-}
+// ประเภทข้อมูลของฟอร์ม
+type FormData = {
+  name: string;
+  job: string;
+  age: number;
+};
 
-// สร้าง Context
-const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
+type FormContextType = {
+  formData: FormData;
+  setFormData: (data: FormData) => void;
+};
 
-// สร้าง Provider
-export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [formData, setFormData] = useState({ name: "", age: 0, job: "" });
+// สร้าง Context โดยมีค่าเริ่มต้น
+const FormContext = createContext<FormContextType | undefined>(undefined);
+
+type FormProviderProps = {
+  children: ReactNode;
+};
+
+// สร้าง Provider เพื่อใช้ในแอป
+export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    job: '',
+    age: 0,
+  });
 
   return (
-    <GlobalContext.Provider value={{ formData, setFormData }}>
+    <FormContext.Provider value={{ formData, setFormData }}>
       {children}
-    </GlobalContext.Provider>
+    </FormContext.Provider>
   );
 };
 
-// สร้าง hook เพื่อใช้ Context
-export const useGlobalContext = () => {
-  const context = useContext(GlobalContext);
+// ฟังก์ชันช่วยเรียกใช้งาน Context
+export const useForm = () => {
+  const context = useContext(FormContext);
   if (!context) {
-    throw new Error('useGlobalContext must be used within a GlobalProvider');
+    throw new Error('useForm must be used within a FormProvider');
   }
   return context;
 };

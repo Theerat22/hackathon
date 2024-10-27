@@ -3,8 +3,11 @@
 import { easeOut, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useForm } from "@/app/context/GlobalContext";
 
 export const Form: React.FC = () => {
+
+  const { formData } = useForm();
     const [volume, setVolume] = useState<number | null>(null);
     const [focus, setFocus] = useState<number | null>(null);
   const handleVolumeChange = (value: number) => {
@@ -65,8 +68,17 @@ export const Form: React.FC = () => {
         transition={{ duration: 1, delay: 0, ease: easeOut }}
         >
             <div className=" text-customGreen font-bold  z-10 mt-20">
-                <p className="mb-7 text-4xl lg:text-6xlmb-10">สวัสดี </p>
-                <p className="text-6xl lg:text-8xl">"สมชาย"</p>
+                <motion.p initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.5, ease: easeOut }} 
+                  className="mb-7 text-4xl lg:text-6xlmb-10">สวัสดี </motion.p>
+
+
+                <motion.p 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.75, ease: easeOut }} 
+                  className="text-6xl lg:text-8xl">"{formData.name}"</motion.p>
             </div>
         </motion.div>
 

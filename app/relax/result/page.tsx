@@ -1,10 +1,10 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-// import Link from "next/link";
 import { IoMdHappy } from "react-icons/io";
 import Navbar from "@/app/components/Navbar";
-const Focus: React.FC = () => {
+
+const Result: React.FC = () => {
 
     return (
         <>
@@ -67,4 +67,4 @@ const Focus: React.FC = () => {
     );
 };
 
-export default Focus;
+export default Result;
