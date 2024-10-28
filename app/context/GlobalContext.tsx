@@ -1,12 +1,14 @@
-// FormContext.tsx
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 // ประเภทข้อมูลของฟอร์ม
 type FormData = {
   name: string;
   job: string;
   age: number;
+  environment: number;
+  mood: number;
+  questions: string[];
 };
 
 type FormContextType = {
@@ -21,13 +23,24 @@ type FormProviderProps = {
   children: ReactNode;
 };
 
-// สร้าง Provider เพื่อใช้ในแอป
 export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    job: '',
-    age: 0,
+  const [formData, setFormData] = useState<FormData>(() => {
+    // ดึงข้อมูลจาก localStorage ถ้ามีค่าอยู่ในนั้น
+    const savedData = localStorage.getItem('formData');
+    return savedData ? JSON.parse(savedData) : {
+      name: '',
+      job: '',
+      age: 0,
+      environment: 0,
+      mood: 0,
+      questions: [],
+    };
   });
+
+  // บันทึกข้อมูลใน localStorage เมื่อ formData เปลี่ยนแปลง
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
 
   return (
     <FormContext.Provider value={{ formData, setFormData }}>

@@ -3,12 +3,22 @@
 import { easeOut, motion } from "framer-motion";
 // import Link from "next/link";
 import { TbAirConditioning } from "react-icons/tb";
-import Navbar from "@/app/components/Navbar";
+import { useForm } from "@/app/context/GlobalContext";
+// import Navbar from "@/app/components/Navbar";
 const Focus: React.FC = () => {
+  const { formData } = useForm();
+
+  const environmentText: { [key: number]: string } = {
+    5: "มาก",
+    4: "ค่อนข้างมาก",
+    3: "ปานกลาง",
+    2: "น้อย",
+    1: "น้อยมาก"
+  };
 
     return (
         <>
-        <Navbar
+        {/* <Navbar
         navigationType={"single"}
         items={[
           {
@@ -21,7 +31,7 @@ const Focus: React.FC = () => {
             path: "#activities",
           },
         ]}
-      />
+      /> */}
         <main>
         <section id="welcome" className="relative min-h-screen pt-32 bg-amber-100 py-12 overflow-hidden">
         <div className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-[#4B6A81] opacity-80 rounded-full shadow-2xl z-0"></div>
@@ -49,12 +59,17 @@ const Focus: React.FC = () => {
           >
             <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">
                 <h1 className="text-2xl font-bold text-customGreen mb-2 lg:text-2xl">
-                คุณเหมาะกับ
+                คุณเหมาะกับ {formData.mood === 1 ? "เสือก" : "ความสวยงาม"}
                 </h1>
                     <TbAirConditioning size={100} className="text-customGreen mb-2" /> {/* Adjusted margin-bottom */}
                     <h1 className="text-center text-customGreen font-semibold text-lg">เสียงแอร์</h1>
 
                     <p className="text-center pt-4 text-black" >เสียงแอร์เป็นเสียงรอบข้างที่มีลักษณะเป็นเสียง White Noise ซึ่งมีคุณสมบัติที่ช่วยให้เกิดสมาธิและช่วยให้จดจ่อกับงานหรือการเรียนได้ดีขึ้น</p>
+                    <p className="text-center pt-4 text-black" >
+                      สวัสดีคุณคือผู้ให้คำปรึกษาสุขภาพจิต​ โดยที่คนที่กำลังถามตอนนี้กำลังเป็น {formData.job} อายุ {formData.age} ปี 
+                      โดยเขาต้องการเสียงในการโฟกัสกับการทำงานหรือการเรียน โดยตอนนี้กำลังอยู่ในสภาพแวดล้อมที่มีเสียงในระดับที่มีเสียง {environmentText[formData.environment]} 
+                      และต้องการใช้สมาธิในการเรียนระดัับ {environmentText[formData.mood]} จงแนะนำเสียงที่เหมาะแก่กับการที่กำลังอยู่ในสภาพแวดล้อมนี้มากที่สุดมา 1 เสียง และอธิบายว่าทำไมต้องเป็นเสียงนี้ 
+                      </p>
             </div>
           </motion.div>
 

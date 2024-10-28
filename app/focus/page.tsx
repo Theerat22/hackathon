@@ -1,11 +1,11 @@
 // import { Welcome } from "./sections/welcome";
 import { Form } from "@/app/focus/sections/welcome";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 const Focus: React.FC = () => {
 
     return (
         <>
-        <Navbar
+        {/* <Navbar
         navigationType={"single"}
         items={[
           {
@@ -18,7 +18,7 @@ const Focus: React.FC = () => {
             path: "#activities",
           },
         ]}
-      />
+      /> */}
         <main>
             <Form />
         </main>

@@ -36,17 +36,17 @@ export const Form: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    if (selectedValue !== null) {
-      const updatedAnswers = [...answers, selectedValue];
-      setAnswers(updatedAnswers);
-      setSelectedValue(null);
+    // if (selectedValue !== null) {
+    //   const updatedAnswers = [...answers, selectedValue];
+    //   setAnswers(updatedAnswers);
+    //   setSelectedValue(null);
 
-      // Navigate to the results page with answers in the query
-      router.push({
-        pathname: "/relax/result",
-        query: { answers: JSON.stringify(updatedAnswers) },
-      });
-    }
+    //   // Navigate to the results page with answers in the query
+    //   router.push({
+    //     pathname: "/relax/result",
+    //     query: { answers: JSON.stringify(updatedAnswers) },
+    //   });
+    // }
   };
 
   useEffect(() => {

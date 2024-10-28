@@ -15,7 +15,7 @@ export const Form: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormData({ name, job, age });
+    setFormData({ name, job, age, environment: 0, mood: 0, questions: [] });
     console.log("Form submitted:", { name, job, age });
 
     window.location.hash = "#mood";
