@@ -2,13 +2,13 @@
 
 import { easeOut, motion } from "framer-motion";
 import { IoMdHappy } from "react-icons/io";
-import Navbar from "@/app/components/Navbar";
+// import Navbar from "@/app/components/Navbar";
 
 const Result: React.FC = () => {
 
     return (
         <>
-        <Navbar
+        {/* <Navbar
         navigationType={"single"}
         items={[
           {
@@ -21,7 +21,7 @@ const Result: React.FC = () => {
             path: "#activities",
           },
         ]}
-      />
+      /> */}
         <main>
         <section id="welcome" className="relative min-h-screen pt-32 bg-amber-100 py-12 overflow-hidden">
         <div className="absolute top-[-100px] left-[-150px] w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] bg-[#4B6A81] opacity-80 rounded-full shadow-2xl z-0"></div>
