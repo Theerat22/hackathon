@@ -1,5 +1,5 @@
 {
-  "name": "MoodFlow",
+  "name": "hackathon",
   "version": "1.0.0",
   "description": "MoodFlow เป็นเว็ปแอปพลิเคชั่นช่วยให้ผุ้ใช้งานผ่อนคลายได้ จากการเรียนหนังสือ และให้คำปรึกษาเกี่ยวกับการเรียน",
   "main": "/home/page.tsx",
