@@ -57,7 +57,6 @@ const Result: React.FC = () => {
                     <p className="text-center pt-4 text-black" >3.สร้างบรรยากาศที่เหมาะสม</p>
                     <p className="text-center pt-4 text-black" >4.หลีกเลี่ยงคาเฟอีนและแอลกอฮอล์</p>
                     <p className="text-center pt-4 text-black" >5.ผ่อนคลายก่อนนอน</p>
-
             </div>
           </motion.div>
         </div>

@@ -8,7 +8,7 @@ type FormData = {
   age: number;
   environment: number;
   mood: number;
-  questions: string[];
+  questions: number[];
 };
 
 type FormContextType = {
@@ -25,9 +25,8 @@ type FormProviderProps = {
 
 export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
   const [formData, setFormData] = useState<FormData>(() => {
-    // ดึงข้อมูลจาก localStorage ถ้ามีค่าอยู่ในนั้น
     const savedData = localStorage.getItem('formData');
-    return savedData ? JSON.parse(savedData) : {
+    const defaultData: FormData = {
       name: '',
       job: '',
       age: 0,
@@ -35,6 +34,13 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
       mood: 0,
       questions: [],
     };
+
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      // Reset mood, focus, and questions only
+      return { ...parsedData, mood: 0, focus: 0, questions: [] };
+    }
+    return defaultData;
   });
 
   // บันทึกข้อมูลใน localStorage เมื่อ formData เปลี่ยนแปลง
