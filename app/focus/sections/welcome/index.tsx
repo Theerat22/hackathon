@@ -1,7 +1,6 @@
 "use client";
 
 import { easeOut, motion } from "framer-motion";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "@/app/context/GlobalContext";
@@ -72,7 +71,7 @@ export const Form: React.FC = () => {
                 สวัสดี
               </motion.p>
               <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.75, ease: easeOut }} className="text-6xl lg:text-8xl">
-                "{formData.name}"
+              &quot;{formData.name}&quot;
               </motion.p>
             </div>
           </motion.div>

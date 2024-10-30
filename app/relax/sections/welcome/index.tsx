@@ -14,7 +14,7 @@ export const Form: React.FC = () => {
   const router = useRouter();
   const questions = [
     {
-      text: "เธอเคยนอนไม่หลับเพราะคิดมากหรือกังวลใจ",
+      text: 'เธอเคยนอนไม่หลับเพราะคิดมากหรือกังวลใจ',
       options: [
         { label: 'บ่อยครั้ง', value: 4 },
         { label: 'ค่อนข้างบ่อย', value: 3 },
@@ -23,7 +23,61 @@ export const Form: React.FC = () => {
       ],
     },
     {
-      text: "เธอเคยมีความกดดันจากการทำงานไหม",
+      text: 'เธอเคยมีความกดดันจากการทำงานไหม',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันรู้สึกไม่มีความสุขและเศร้าหมอง',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันไม่อยากพบปะผู้คน',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันรู้สึกกระวนกระวายอยู่ตลอดเวลา',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันมีอาการปวดหัวข้างเดียว หรือปวดบริเวณขมับทั้ง 2 ข้าง',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันมีอาการหัวใจเต้นแรง',
+      options: [
+        { label: 'บ่อยครั้ง', value: 4 },
+        { label: 'ค่อนข้างบ่อย', value: 3 },
+        { label: 'ไม่บ่อย', value: 2 },
+        { label: 'ไม่เคย', value: 1 },
+      ],
+    },
+    {
+      text: 'ฉันมีอาการปวดหรือเกร็งกล้ามเนื้อบริเวณท้ายทอย หลัง หรือไหล่',
       options: [
         { label: 'บ่อยครั้ง', value: 4 },
         { label: 'ค่อนข้างบ่อย', value: 3 },
@@ -104,7 +158,7 @@ export const Form: React.FC = () => {
                 สวัสดี
               </motion.p>
               <motion.p initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.75, ease: easeOut }} className="text-6xl lg:text-8xl">
-                "{formData.name}"
+              &quot;{formData.name}&quot;
               </motion.p>
             </div>
           </motion.div>

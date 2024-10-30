@@ -33,7 +33,7 @@ export const Welcome = () => {
             transition={{ duration: 1, delay: 0.5, ease: easeOut }}
           >
             <p className="text-lg m-3 lg:text-3xl max-w-lg text-center text-gray-500">
-              MoodFlow เป็นเว็ปแอปพลิเคชั่นช่วยให้ผุ้ใช้งานผ่อนคลายได้ จากการเรียนหนังสือ และให้คำปรึกษาเกี่ยวกับการเรียน
+              MoodFlow เป็นเว็ปแอปพลิเคชั่นช่วยให้ผู้ใช้งานผ่อนคลายได้ จากการเรียนหนังสือ และให้คำปรึกษาเกี่ยวกับการเรียน
             </p>
           </motion.div>
 
