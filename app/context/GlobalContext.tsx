@@ -1,11 +1,11 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-// ประเภทข้อมูลของฟอร์ม
+// Define the structure of form data
 type FormData = {
   name: string;
   job: string;
-  age: number;
+  age: string;
   environment: number;
   mood: number;
   questions: number[];
@@ -16,7 +16,7 @@ type FormContextType = {
   setFormData: (data: FormData) => void;
 };
 
-// สร้าง Context โดยมีค่าเริ่มต้น
+// Create the context with an initial undefined value
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 type FormProviderProps = {
@@ -24,26 +24,27 @@ type FormProviderProps = {
 };
 
 export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
-  const [formData, setFormData] = useState<FormData>(() => {
-    const savedData = localStorage.getItem('formData');
-    const defaultData: FormData = {
-      name: '',
-      job: '',
-      age: 0,
-      environment: 0,
-      mood: 0,
-      questions: [],
-    };
-
-    if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      // Reset mood, focus, and questions only
-      return { ...parsedData, mood: 0, focus: 0, questions: [] };
-    }
-    return defaultData;
+  // Set a default value initially
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    job: '',
+    age: '',
+    environment: 0,
+    mood: 0,
+    questions: [],
   });
 
-  // บันทึกข้อมูลใน localStorage เมื่อ formData เปลี่ยนแปลง
+  // Load saved data from localStorage after component mounts
+  useEffect(() => {
+    const savedData = localStorage.getItem('formData');
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      // Reset mood, environment, and questions only
+      setFormData({ ...parsedData, mood: 0, environment: 0, questions: [] });
+    }
+  }, []);
+
+  // Save formData to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('formData', JSON.stringify(formData));
   }, [formData]);
@@ -55,7 +56,7 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
   );
 };
 
-// ฟังก์ชันช่วยเรียกใช้งาน Context
+// Custom hook to use the FormContext
 export const useForm = () => {
   const context = useContext(FormContext);
   if (!context) {
