@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { University } from '@/app/models/University';
 import { recommendUniversity } from '@/app/api/recommendation';
-import { useForm } from "@/app/context/GlobalContext";
+// import { useForm } from "@/app/context/GlobalContext";
 
 const universities: University[] = [
   {name: 'จุฬาลงกรณ์มหาวิทยาลัย', environment:5 , transportation: 5, costOfLiving: 3, accommodation: 4 },
@@ -20,43 +20,13 @@ const universities: University[] = [
 const userScores = { environment: 4, transportation: 3, costOfLiving: 2, accommodation: 3 };
 const weights = { environment: 1, transportation: 1, costOfLiving: 1, accommodation: 1 };
 
+interface RecommendedUniversity {
+  name: string;
+  score: number;
+}
+
 const UniversityRecommendation: React.FC = () => {
-  const { formData } = useForm();
-  const [loading, setLoading] = useState(false);
-  const [recommendedUniversities, setRecommendedUniversities] = useState<any[]>([]);
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState<any>(null);
-
-  
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true); // Set loading state
-
-    try {
-        const res = await fetch('/api/gemini', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ prompt }),
-        });
-
-        if (!res.ok) {
-            const errorMessage = await res.text(); // Capture the error message
-            throw new Error(`Network response was not ok: ${errorMessage}`);
-        }
-
-        const data = await res.json();
-        setResponse(data); // Update response state with the fetched data
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        // setResponse({ error: error.message }); // Handle errors gracefully
-    } finally {
-        setLoading(false); // Reset loading state
-    }
-  };
-
-  // Calculate recommended universities when component mounts or when userScores/weights change
+  const [recommendedUniversities, setRecommendedUniversities] = useState<RecommendedUniversity[]>([]);
   React.useEffect(() => {
     const recommended = recommendUniversity(universities, weights, userScores);
     setRecommendedUniversities(recommended);
@@ -71,22 +41,6 @@ const UniversityRecommendation: React.FC = () => {
           <li key={uni.name}>{uni.name}: {uni.score}</li>
         ))}
       </ul>
-      {/* <p>{formData.lifystyles}</p> Ensure formData.lifystyles is defined in context */}
-      
-      {/* <form onSubmit={handleSubmit}>
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter your prompt"
-          rows={4}
-        />
-        <button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Submit'}</button>
-      </form>
-      <h1>{formData.name}</h1>
-        <div>
-          <h3>Response:</h3>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
-        </div> */}
     </div>
     </section>
   );
