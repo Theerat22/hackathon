@@ -7,99 +7,64 @@ import { useForm } from "@/app/context/GlobalContext";
 
 export const Dream: React.FC = () => {
   const { formData, setFormData } = useForm();
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  const [selectedValue, setSelectedValue] = useState<number | null>(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   // const [volume, setVolume] = useState<number>(formData.environment);
   // const [focus, setFocus] = useState<number>(formData.mood);
+
+  
   // console.log("formData:", formData);
-  const router = useRouter();
+  // const router = useRouter();
   const questions = [
     {
-      text: 'หากคุณต้องเลือกวิชาเรียนที่สนใจคุณจะเลือกสาขาใด',
+      text: 'คุณเหมาะกับสภาพแวดล้อมแบบใด',
       options: [
-        { label: 'วิทยาศาสตร์', value: 4 },
-        { label: 'คณิตศาสตร์และเทคโนโลยี', value: 3 },
-        { label: 'ภาษา สังคม และการสื่อสาร', value: 2 },
-        { label: 'สุนทรีย นาฏศิลป์ และทักษะชีวิต', value: 1 },
+        { label: 'ในตัวเมือง และห้างสรรพสินค้า', value: 4 },
+        { label: 'ชานเมือง', value: 3 },
+        { label: 'ทะเล', value: 2 },
+        { label: 'ป่าไม้และธรรมชาติ', value: 1 },
       ],
     },
     {
-      text: 'คุณคิดว่าทักษะในข้อใดใกล้เคียงกับตัวคุณมากที่สุด',
+      text: 'คุณคิดว่าปัญหารถติดส่งผลต่อชีวิตคุณมากน้อยแค่ไหน',
       options: [
-        { label: 'ด้านกีฬา ดนตรี และศิลปะ', value: 4 },
-        { label: 'ด้านสังคมและความเป็นผู้นำ', value: 3 },
-        { label: 'ด้านการวิทยาศาสตร์และเทคโนโลยี', value: 2 },
-        { label: 'ด้านการแสดงละครและนาฏศิลป์', value: 1 },
-        { label: 'ด้านการแสดงละครและนาฏศิลป์', value: 1 },
+        { label: 'มากที่สุด', value: 4 },
+        { label: 'มาก', value: 3 },
+        { label: 'ปานกลาง', value: 2 },
+        { label: 'น้อยที่สุด', value: 1 },
       ],
     },
     {
-      text: 'สถานการณ์ใดที่คุณคิดว่าเป็นตัวเองมากที่สุด',
+      text: 'ค่าครองชีพที่คุณพึงพอใจในการจ่าย',
       options: [
-        { label: 'ฉันรู้สึกดีเมื่อได้เล่นดนตรี หรือ วาดภาพ', value: 4 },
-        { label: 'ฉันมีความสุขเมื่อได้ช่วยเหลือผู้อื่น', value: 3 },
-        { label: 'ฉันชอบอ่านวารประเภทสารคดี หรือการเมือง', value: 2 },
-        { label: 'ฉันรักและหลงไหลในสัตว์', value: 1 },
+        { label: 'ค่าครองชีพต่ำ', value: 4 },
+        { label: 'ค่าครองชีพปานกลาง', value: 3 },
+        { label: 'ค่าครองชีพสูง', value: 2 },
+        { label: 'ค่าครองชีพสูงมาก', value: 1 },
       ],
     },
     {
-      text: 'ฉันไม่อยากพบปะผู้คน',
+      text: 'หากคุณเป็นนักศึกษาต้องการหาที่พักคุณจะเลือกที่พักแบบไหน',
       options: [
-        { label: 'บ่อยครั้ง', value: 4 },
-        { label: 'ค่อนข้างบ่อย', value: 3 },
-        { label: 'ไม่บ่อย', value: 2 },
-        { label: 'ไม่เคย', value: 1 },
+        { label: 'เช่าโรงแรม', value: 4 },
+        { label: 'ซื้อคอนโด / หอพักนักศึกษาใน', value: 3 },
+        { label: 'หอพักนักศึกษานอก', value: 2 },
+        { label: 'อยู่บ้าน', value: 1 },
       ],
     },
-    {
-      text: 'ฉันรู้สึกกระวนกระวายอยู่ตลอดเวลา',
-      options: [
-        { label: 'บ่อยครั้ง', value: 4 },
-        { label: 'ค่อนข้างบ่อย', value: 3 },
-        { label: 'ไม่บ่อย', value: 2 },
-        { label: 'ไม่เคย', value: 1 },
-      ],
-    },
-    {
-      text: 'ฉันมีอาการปวดหัวข้างเดียว หรือปวดบริเวณขมับทั้ง 2 ข้าง',
-      options: [
-        { label: 'บ่อยครั้ง', value: 4 },
-        { label: 'ค่อนข้างบ่อย', value: 3 },
-        { label: 'ไม่บ่อย', value: 2 },
-        { label: 'ไม่เคย', value: 1 },
-      ],
-    },
-    {
-      text: 'ฉันมีอาการหัวใจเต้นแรง',
-      options: [
-        { label: 'บ่อยครั้ง', value: 4 },
-        { label: 'ค่อนข้างบ่อย', value: 3 },
-        { label: 'ไม่บ่อย', value: 2 },
-        { label: 'ไม่เคย', value: 1 },
-      ],
-    },
-    {
-      text: 'ฉันมีอาการปวดหรือเกร็งกล้ามเนื้อบริเวณท้ายทอย หลัง หรือไหล่',
-      options: [
-        { label: 'บ่อยครั้ง', value: 4 },
-        { label: 'ค่อนข้างบ่อย', value: 3 },
-        { label: 'ไม่บ่อย', value: 2 },
-        { label: 'ไม่เคย', value: 1 },
-      ],
-    },
+    
   ];
 
-  const handleSelect = (value: string) => {
+  const handleSelect = (value: number) => {
     setSelectedValue(value);
     console.log("Selected value:", value);
   };
 
   const handleSubmit = () => {
     if (selectedValue !== null) {
-      const updatedAnswers = [...(formData.questions || []), selectedValue];
+      const updatedAnswers = [...(formData.liftstyles || []), selectedValue];
 
-      setFormData({ ...formData, questions: updatedAnswers });
-      
+      setFormData({ ...formData, liftstyles: updatedAnswers });    
 
       console.log("Form submitted:", formData);
 
@@ -118,15 +83,15 @@ export const Dream: React.FC = () => {
     }
   };
 
-  const handleVolumeChange = (value: number) => {
-    setVolume(value);
-    console.log("Selected volume:", value); // Debugging
-  };
+  // const handleVolumeChange = (value: number) => {
+  //   setVolume(value);
+  //   console.log("Selected volume:", value); // Debugging
+  // };
 
-  const handleFocusChange = (value: number) => {
-    setFocus(value);
-    console.log("Selected focus level:", value); // Debugging
-  };
+  // const handleFocusChange = (value: number) => {
+  //   setFocus(value);
+  //   console.log("Selected focus level:", value); // Debugging
+  // };
   
 
   useEffect(() => {
@@ -178,58 +143,60 @@ export const Dream: React.FC = () => {
       </section>
 
       <section id="ask" className="relative min-h-screen">
-      <div className="container mx-auto px-4 text-center flex flex-col justify-center items-center z-20 relative pt-20">
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={questionIndex}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -50 }}
-      transition={{ duration: 1, ease: easeOut }}
-      className="bg-white text-customGreen font-bold text-2xl py-6 px-6 max-w-3xl mx-auto rounded-xl shadow-lg z-10 mb-8 lg:text-4xl"
-    >
-      {currentQuestion.text}
-    </motion.div>
-  </AnimatePresence>
-  <div className="flex flex-col space-y-4 p-4">
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.75, ease: "easeOut" }}
-      className="relative"
-    >
-      <select
-        onChange={(e) => handleSelect(e.target.value)}
-        className="py-3 px-4 text-lg rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
-        defaultValue=""
-      >
-        <option value="" disabled>Select an option</option>
-        {currentQuestion.options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </motion.div>
-    {selectedValue !== null && (
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-        className="pt-8"
-      >
-        <button
-          onClick={handleSubmit}
-          className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full hover:bg-sky-600 transition-all duration-300 ease-out"
-        >
-          Submit
-        </button>
-      </motion.div>
-    )}
-  </div>
-</div>
-
+        <div className="container mx-auto px-4 text-center flex flex-col justify-center items-center z-20 relative pt-20">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={questionIndex}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 1, ease: easeOut }}
+              className="bg-white text-customGreen font-bold text-2xl py-6 px-6 max-w-3xl mx-auto rounded-xl shadow-lg z-10 mb-8 lg:text-4xl"
+            >
+              {currentQuestion.text}
+            </motion.div>
+          </AnimatePresence>
+          <div className="flex flex-col space-y-4 p-4">
+            {currentQuestion.options.map((option, index) => (
+              <motion.button
+                key={option.value}
+                onClick={() => handleSelect(option.value)}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.75 + index * 0.2,
+                  ease: "easeOut",
+                }}
+                className={`py-8 px-20 text-white rounded-lg font-semibold 
+                ${selectedValue === option.value ? "ring-4 ring-white" : ""} 
+                ${option.value === 1 ? "bg-[#AED68B]" : ""} 
+                ${option.value === 2 ? "bg-[#D6BE8B]" : ""} 
+                ${option.value === 3 ? "bg-[#D6AA8B]" : ""} 
+                ${option.value === 4 ? "bg-[#C97E7E]" : ""}`}
+              >
+                {option.label}
+              </motion.button>
+            ))}
+            {selectedValue !== null && (
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                className="pt-8"
+              >
+                <button
+                  onClick={handleSubmit}
+                  className="bg-sky-500 text-white py-3 px-8 font-bold text-xl rounded-full hover:bg-sky-600 transition-all duration-300 ease-out"
+                >
+                  Submit
+                </button>
+              </motion.div>
+            )}
+          </div>
+        </div>
       </section>
+
     </main>
   );
 };

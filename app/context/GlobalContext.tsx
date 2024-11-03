@@ -44,7 +44,8 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     if (savedData) {
       const parsedData = JSON.parse(savedData);
       // Reset mood, environment, and questions only
-      setFormData({ ...parsedData, mood: 0, environment: 0, questions: [] });
+      setFormData({ ...parsedData, mood: 0, environment: 0, questions: [],skills: [],
+        liftstyles: [], });
     }
   }, []);
 
