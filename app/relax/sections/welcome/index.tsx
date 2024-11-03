@@ -9,7 +9,8 @@ export const Form: React.FC = () => {
   const { formData, setFormData } = useForm();
   const [selectedValue, setSelectedValue] = useState<number | null>(null);
   const [questionIndex, setQuestionIndex] = useState(0);
-
+  const [volume, setVolume] = useState<number>(formData.environment);
+  const [focus, setFocus] = useState<number>(formData.mood);
   // console.log("formData:", formData);
   const router = useRouter();
   const questions = [
@@ -107,13 +108,39 @@ export const Form: React.FC = () => {
       // ถ้าเป็นคำถามสุดท้าย ให้ไปที่หน้าผลลัพธ์
       if (questionIndex === questions.length - 1) {
         console.log("Last question");
-        router.push("/relax/result");
+        // router.push("/relax/result");
       } else {
         // ถ้าไม่ใช่คำถามสุดท้าย ให้แสดงคำถามถัดไป
         setQuestionIndex(questionIndex + 1);
         // console.log("Next question index:", questionIndex + 1);
       }
     }
+  };
+
+  const handleSubmit2 = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormData({
+      name: formData.name,
+      job: formData.job,
+      age: formData.age,
+      environment: volume,
+      mood: focus,
+      questions: [],
+      skills: [],
+      liftstyles: [],
+    });
+    console.log("Form submitted:", { environment: volume, mood: focus });
+    router.push("/focus/result");
+  };
+
+  const handleVolumeChange = (value: number) => {
+    setVolume(value);
+    console.log("Selected volume:", value); // Debugging
+  };
+
+  const handleFocusChange = (value: number) => {
+    setFocus(value);
+    console.log("Selected focus level:", value); // Debugging
   };
   
 
@@ -217,6 +244,46 @@ export const Form: React.FC = () => {
               </motion.div>
             )}
           </div>
+        </div>
+      </section>
+
+      <section id="ask" className="relative min-h-screen">
+        <div className="container mx-auto px-4 text-center flex flex-col justify-center items-center z-20 relative pt-20">
+          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0, ease: "easeOut" }}>
+            <div className="bg-white text-customGreen font-bold text-2xl py-6 px-6 max-w-3xl mx-auto rounded-xl shadow-lg z-10 mb-8 lg:text-4xl">
+              สภาพแวดล้อมของคุณ มีเสียงรบกวนระดับไหน
+            </div>
+          </motion.div>
+
+          <motion.div className="flex space-x-4 justify-center pt-5" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}>
+            {Array.from({ length: 5 }, (_, i) => i + 1).map((value) => (
+              <button key={value} onClick={() => handleVolumeChange(value)} className={`py-4 px-6 text-white rounded-full font-semibold ${volume === value ? "bg-[#4B6A81]" : "bg-gray-300"} ${volume === value ? "text-white" : ""}`}>
+                {value}
+              </button>
+            ))}
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0, ease: "easeOut" }}>
+            <div className="bg-white text-customGreen font-bold text-2xl py-6 px-6 max-w-3xl mt-24 mx-auto rounded-xl shadow-lg z-10 mb-8 lg:text-4xl">
+              ระดับความโฟกัสที่ต้องการ
+            </div>
+          </motion.div>
+
+          <motion.div className="flex space-x-4 justify-center pt-5" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}>
+            {Array.from({ length: 5 }, (_, i) => i + 1).map((value) => (
+              <button key={value} onClick={() => handleFocusChange(value)} className={`py-4 px-6 text-white rounded-full font-semibold ${focus === value ? "bg-[#4B6A81]" : "bg-gray-300"} ${focus === value ? "text-white" : ""}`}>
+                {value}
+              </button>
+            ))}
+          </motion.div>
+
+          {handleVolumeChange !== null && handleFocusChange !== null && (
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.75, ease: "easeOut" }} className="mt-20">
+              <button onClick={handleSubmit2} className="bg-sky-500 text-white py-3 px-6 rounded-full font-bold shadow-lg text-2xl hover:transition-all duration-300 ease-out">
+                ตกลง
+              </button>
+            </motion.div>
+          )}
         </div>
       </section>
     </main>

@@ -4,6 +4,7 @@ import { easeOut, motion } from "framer-motion";
 import Link from "next/link";
 import { CgWorkAlt } from "react-icons/cg";
 import { IoMdHappy } from "react-icons/io";
+import { CiCloudSun } from "react-icons/ci";
 import { useState } from "react";
 import { useForm } from "@/app/context/GlobalContext";
 
@@ -15,7 +16,7 @@ export const Form: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormData({ name, job, age, environment: 0, mood: 0, questions: [] });
+    setFormData({ name, job, age, environment: 0, mood: 0, questions: [], skills: [], liftstyles: [] });
     console.log("Form submitted:", { name, job, age });
 
     window.location.hash = "#mood";
@@ -76,7 +77,7 @@ export const Form: React.FC = () => {
                     id="age"
                     name="age"
                     value={age}
-                    onChange={(e) => setAge(Number(e.target.value))}
+                    onChange={(e) => setAge(e.target.value)}
                     className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="กรอกอายุของคุณ"
                   />
@@ -134,7 +135,7 @@ export const Form: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.75, ease: easeOut }}
             >
-              <div className="grid grid-rows-2 lg:grid-cols-2">
+              <div className="grid grid-rows-2 lg:grid-cols-3">
                 <Link 
                   href={'/focus'}
                   className="flex flex-col items-center mt-7 transform hover:scale-110 transition duration-300 lg:mt-20"
@@ -151,6 +152,15 @@ export const Form: React.FC = () => {
                   <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">
                     <IoMdHappy size={100} className="text-customGreen mb-2" />
                     <h1 className="text-center text-customGreen font-semibold text-lg">ผ่อนคลายจากการทำงาน</h1>
+                  </div>
+                </Link>
+                <Link 
+                  href={'/dream'}
+                  className="flex flex-col items-center mt-7 transform hover:scale-110 transition duration-300 lg:mt-20"
+                >
+                  <div className="bg-white py-10 px-12 w-64 lg:w-96 lg:py-16 lg:px-16 rounded-xl shadow-lg z-10 flex flex-col items-center justify-center min-h-[200px]">
+                    <CiCloudSun size={100} className="text-customGreen mb-2" />
+                    <h1 className="text-center text-customGreen font-semibold text-lg">หาตัวเอง</h1>
                   </div>
                 </Link>
               </div>

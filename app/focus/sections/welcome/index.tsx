@@ -20,6 +20,8 @@ export const Form: React.FC = () => {
       environment: volume,
       mood: focus,
       questions: [],
+      skills: [],
+      liftstyles: [],
     });
     console.log("Form submitted:", { environment: volume, mood: focus });
     router.push("/focus/result");

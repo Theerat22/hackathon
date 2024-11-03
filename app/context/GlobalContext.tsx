@@ -9,6 +9,8 @@ type FormData = {
   environment: number;
   mood: number;
   questions: number[];
+  skills: number[];
+  liftstyles: number[];
 };
 
 type FormContextType = {
@@ -32,6 +34,8 @@ export const FormProvider: React.FC<FormProviderProps> = ({ children }) => {
     environment: 0,
     mood: 0,
     questions: [],
+    skills: [],
+    liftstyles: [],
   });
 
   // Load saved data from localStorage after component mounts
