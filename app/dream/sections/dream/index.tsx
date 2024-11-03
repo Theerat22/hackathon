@@ -129,7 +129,7 @@ export const Dream: React.FC = () => {
             transition={{ duration: 1, delay: 0, ease: easeOut }}
           >
             <div className="bg-white text-customGreen font-bold text-3xl py-4 px-4 w-64 mx-auto rounded-xl shadow-lg z-10 mb-8">
-              ผ่อนคลายจากการทำงาน
+              หาตัวเอง
             </div>
           </motion.div>
 
