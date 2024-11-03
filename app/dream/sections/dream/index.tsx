@@ -2,7 +2,7 @@
 
 import { easeOut, motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useForm } from "@/app/context/GlobalContext";
 
 export const Dream: React.FC = () => {
