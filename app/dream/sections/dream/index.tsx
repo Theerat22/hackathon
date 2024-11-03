@@ -74,6 +74,10 @@ export const Dream: React.FC = () => {
       // ถ้าเป็นคำถามสุดท้าย ให้ไปที่หน้าผลลัพธ์
       if (questionIndex === questions.length - 1) {
         console.log("Last question");
+        const askSection = document.getElementById("prompt");
+        if (askSection) {
+          askSection.scrollIntoView({ behavior: "smooth" });
+        }
         // router.push("/relax/result");
       } else {
         // ถ้าไม่ใช่คำถามสุดท้าย ให้แสดงคำถามถัดไป
